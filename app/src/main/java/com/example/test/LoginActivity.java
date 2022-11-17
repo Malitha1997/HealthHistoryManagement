@@ -17,7 +17,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText loginUserName;
     EditText  loginPassword;
-    //ProgressBar progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +24,38 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         viewSignup=findViewById(R.id.viewSignup);
+        loginUserName=findViewById(R.id.loginUserName);
+        loginPassword=findViewById(R.id.loginPassword);
 
         viewSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(i);
+            }
+        });
+
+        loginUserName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(loginUserName.getText().toString().trim().isEmpty()){
+                    loginUserName.setError("Username should not be empty");
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Sucessful!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        loginPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(loginPassword.getText().toString().trim().isEmpty()){
+                    loginPassword.setError("Password should not be empty");
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Sucessful!!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
