@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnSignup;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +31,19 @@ public class MainActivity extends AppCompatActivity {
         InputPassword=findViewById(R.id.InputPassword);
         inputConfirmPassword=findViewById(R.id.inputConfirmPassword);
 
+
+
         viewLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),LoginActivity.class);
+
+                Intent i=new Intent(getApplicationContext(),Home.class);
                 startActivity(i);
+
+
             }
         });
+
 
         username.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,5 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 }
