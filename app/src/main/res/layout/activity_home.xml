@@ -98,7 +98,7 @@
                     app:srcCompat="@drawable/booklet" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/text_my_health_booklet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView2"
@@ -129,7 +129,7 @@
                     app:srcCompat="@drawable/sideeffects" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/text_side_effects"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView3"

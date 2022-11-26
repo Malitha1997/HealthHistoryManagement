@@ -19,8 +19,9 @@ import android.os.Bundle;
 public class Home extends AppCompatActivity {
     TextView LifeCare;
     RelativeLayout add_prescription;
-    //ImageView img_add_prescription;
     TextView text_add_prescription;
+    TextView text_my_health_booklet;
+    TextView text_side_effects;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -29,8 +30,9 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         LifeCare=findViewById(R.id.LifeCare);
-        //img_add_prescription=findViewById(R.id.img_add_prescription);
         text_add_prescription=findViewById(R.id.text_add_prescription);
+        text_my_health_booklet=findViewById(R.id.text_my_health_booklet);
+        text_side_effects=findViewById(R.id.text_side_effects);
 
         LifeCare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,8 +45,24 @@ public class Home extends AppCompatActivity {
         text_add_prescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),Add_prescription.class);
-                startActivity(intent);
+                Intent i=new Intent(getApplicationContext(),Add_prescription.class);
+                startActivity(i);
+            }
+        });
+
+        text_my_health_booklet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getApplicationContext(),My_health_booklet.class);
+                startActivity(i);
+            }
+        });
+
+        text_side_effects.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getApplicationContext(),Side_effects.class);
+                startActivity(i);
             }
         });
     }
