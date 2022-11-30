@@ -71,7 +71,7 @@
         android:id="@+id/search"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginBottom="480dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/search"
         android:gravity="center"
         android:iconifiedByDefault="false"
@@ -80,6 +80,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/where"
-        app:layout_constraintVertical_bias="0.089" />
+        app:layout_constraintTop_toBottomOf="@+id/where2"
+        app:layout_constraintVertical_bias="0.050000012" />
+
+    <TextView
+        android:id="@+id/head_side_effects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Side Effects"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lifeCare3"
+        app:layout_constraintTop_toTopOf="@+id/toolbar4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,13 @@
         tools:ignore="HardcodedDebugMode"
         tools:targetApi="31" >
         <activity
+            android:name=".Add_prescription_01"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".View_side_effects"
             android:exported="false" >
             <meta-data

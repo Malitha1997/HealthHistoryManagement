@@ -18,7 +18,6 @@ import android.os.Bundle;
 
 public class Home extends AppCompatActivity {
     TextView LifeCare;
-    RelativeLayout add_prescription;
     TextView text_add_prescription;
     TextView text_my_health_booklet;
     TextView text_side_effects;
@@ -45,8 +44,8 @@ public class Home extends AppCompatActivity {
         text_add_prescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),Add_prescription.class);
-                startActivity(i);
+                Intent intent=new Intent(getApplicationContext(),Add_prescription.class);
+                startActivity(intent);
             }
         });
 
