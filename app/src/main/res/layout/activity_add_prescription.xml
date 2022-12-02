@@ -98,14 +98,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="56dp"
             android:layout_marginEnd="40dp"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="Date"
             android:inputType="textPersonName"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             tools:ignore="TouchTargetSizeCheck" />
@@ -114,17 +115,47 @@
             android:id="@+id/editTextTextPersonName9"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="352dp"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="Disease"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/btn_upload"
             app:layout_constraintEnd_toEndOf="@+id/pres_date"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/pres_date"
             app:layout_constraintTop_toBottomOf="@+id/pres_date"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pres_date"
+            app:layout_constraintEnd_toEndOf="@+id/LifeCare"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/LifeCare"
+            app:layout_constraintTop_toBottomOf="@+id/LifeCare"
+            app:layout_constraintVertical_bias="0.373" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Disease"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9"
+            app:layout_constraintEnd_toEndOf="@+id/pres_date"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="@+id/pres_date"
+            app:layout_constraintTop_toBottomOf="@+id/pres_date"
+            app:layout_constraintVertical_bias="0.611" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

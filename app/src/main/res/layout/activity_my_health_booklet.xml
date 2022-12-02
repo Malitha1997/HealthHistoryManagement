@@ -94,4 +94,17 @@
         app:layout_constraintStart_toEndOf="@+id/lifeCareBooklet"
         app:layout_constraintTop_toTopOf="@+id/toolbar2" />
 
+    <TextView
+        android:id="@+id/prescriptionView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnSearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSearch"
+        app:layout_constraintVertical_bias="0.22000003" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
