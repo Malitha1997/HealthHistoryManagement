@@ -57,7 +57,7 @@
             app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/img_prescription"
             android:layout_width="235dp"
             android:layout_height="230dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +90,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/img_prescription"
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
