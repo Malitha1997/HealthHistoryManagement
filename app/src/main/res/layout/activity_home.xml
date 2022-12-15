@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/LifeCare"
+        android:id="@+id/lifeCareAddPrescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LifeCare"
@@ -151,7 +151,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintStart_toEndOf="@+id/LifeCare"
+        app:layout_constraintStart_toEndOf="@+id/lifeCareAddPrescription"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

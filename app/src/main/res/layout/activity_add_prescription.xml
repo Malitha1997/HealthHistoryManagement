@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/LifeCare"
+            android:id="@+id/lifeCareAddPrescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -53,11 +53,11 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintEnd_toEndOf="@+id/toolbar"
-            app:layout_constraintStart_toEndOf="@+id/LifeCare"
+            app:layout_constraintStart_toEndOf="@+id/lifeCareAddPrescription"
             app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
         <ImageView
-            android:id="@+id/img_prescription"
+            android:id="@+id/pickImage"
             android:layout_width="235dp"
             android:layout_height="230dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +90,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_prescription"
+            app:layout_constraintTop_toBottomOf="@+id/pickImage"
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
@@ -137,10 +137,10 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/pres_date"
-            app:layout_constraintEnd_toEndOf="@+id/LifeCare"
+            app:layout_constraintEnd_toEndOf="@+id/lifeCareAddPrescription"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/LifeCare"
-            app:layout_constraintTop_toBottomOf="@+id/LifeCare"
+            app:layout_constraintStart_toStartOf="@+id/lifeCareAddPrescription"
+            app:layout_constraintTop_toBottomOf="@+id/lifeCareAddPrescription"
             app:layout_constraintVertical_bias="0.373" />
 
         <TextView

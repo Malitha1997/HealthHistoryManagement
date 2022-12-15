@@ -6,15 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-
-import android.os.Bundle;
 
 public class Home extends AppCompatActivity {
     TextView LifeCare;
@@ -28,7 +20,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        LifeCare=findViewById(R.id.LifeCare);
+        LifeCare=findViewById(R.id.lifeCareAddPrescription);
         text_add_prescription=findViewById(R.id.text_add_prescription);
         text_my_health_booklet=findViewById(R.id.text_my_health_booklet);
         text_side_effects=findViewById(R.id.text_side_effects);
