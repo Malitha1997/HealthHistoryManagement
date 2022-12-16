@@ -97,5 +97,5 @@ public class Add_prescription<storagePermission, cameraPermission> extends AppCo
     private void requestStoragePermission(){
         requestPermissions(storagePermission,STORAGE_REQUEST);
     }
-    
+
 }
