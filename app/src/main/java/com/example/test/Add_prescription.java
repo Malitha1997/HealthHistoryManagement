@@ -1,31 +1,24 @@
 package com.example.test;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class Add_prescription<storagePermission, cameraPermission> extends AppCompatActivity {
     TextView lifeCareAddPrescription;
-    public ImageView pickImage;
+    //CropImageView cropImageView = (CropImageView) findViewById(R.id.CropImageView);
+    ImageView pickImage;
     public static final int CAMERA_REQUEST=100;
     public static final int STORAGE_REQUEST=101;
     String cameraPermission[];
@@ -47,13 +40,8 @@ public class Add_prescription<storagePermission, cameraPermission> extends AppCo
                 startActivity(i);
             }
         });
-    }
 
-
-    cameraPermission=new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE};
-    storagePermission=new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE };
-
-        pickImage=(ImageView)findViewById(R.id.pickImage);
+        pickImage=findViewById(R.id.pickImage);
         pickImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +61,13 @@ public class Add_prescription<storagePermission, cameraPermission> extends AppCo
                 }
             }
         });
+    }
+
+
+    //cameraPermission=new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    //storagePermission=new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE };
+
+
 
 
     private boolean checkCameraPermission() {
@@ -90,7 +85,7 @@ public class Add_prescription<storagePermission, cameraPermission> extends AppCo
     }
 
     private void pickFromGallery() {
-        CropImage.activity().start(this);
+
     }
 
     private boolean checkStoragePermission() {
@@ -102,7 +97,5 @@ public class Add_prescription<storagePermission, cameraPermission> extends AppCo
     private void requestStoragePermission(){
         requestPermissions(storagePermission,STORAGE_REQUEST);
     }
-
-
-
+    
 }
