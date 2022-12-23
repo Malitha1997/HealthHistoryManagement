@@ -14,7 +14,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-@RequiresApi(api = Build.VERSION_CODES.M)
+
+//@RequiresApi(api = Build.VERSION_CODES.M)
 public class Add_prescription<storagePermission, cameraPermission> extends AppCompatActivity {
     TextView lifeCareAddPrescription;
     //CropImageView cropImageView = (CropImageView) findViewById(R.id.CropImageView);
@@ -41,7 +42,7 @@ public class Add_prescription<storagePermission, cameraPermission> extends AppCo
             }
         });
 
-        pickImage=findViewById(R.id.pickImage);
+        /*pickImage=findViewById(R.id.pickImage);
         pickImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +61,7 @@ public class Add_prescription<storagePermission, cameraPermission> extends AppCo
                     }
                 }
             }
-        });
+        });*/
     }
 
 
@@ -70,7 +71,7 @@ public class Add_prescription<storagePermission, cameraPermission> extends AppCo
 
 
 
-    private boolean checkCameraPermission() {
+    /*private boolean checkCameraPermission() {
         boolean result= ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)==(PackageManager.PERMISSION_GRANTED);
         boolean result1=ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)==(PackageManager.PERMISSION_GRANTED );
         return result && result1;
@@ -96,6 +97,6 @@ public class Add_prescription<storagePermission, cameraPermission> extends AppCo
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void requestStoragePermission(){
         requestPermissions(storagePermission,STORAGE_REQUEST);
-    }
+    }*/
 
 }

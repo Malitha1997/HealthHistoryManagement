@@ -93,10 +93,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
+        <!--<activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"
-            tools:ignore="MissingClass" />
+            tools:ignore="MissingClass" />-->
     </application>
 
 </manifest>
