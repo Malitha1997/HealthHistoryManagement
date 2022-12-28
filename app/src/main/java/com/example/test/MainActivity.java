@@ -1,5 +1,6 @@
 package com.example.test;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
     EditText email;
     EditText InputPassword;
     EditText inputConfirmPassword;
-    Button btnSignup;
-
+    Button button;
+    private DbHandler dbHandler;
+    private Context context;
 
 
     @Override
@@ -30,8 +32,9 @@ public class MainActivity extends AppCompatActivity {
         email=findViewById(R.id.email);
         InputPassword=findViewById(R.id.InputPassword);
         inputConfirmPassword=findViewById(R.id.inputConfirmPassword);
+        context = this;
 
-
+        dbHandler = new DbHandler(context);
 
         viewLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        username.setOnClickListener(new View.OnClickListener() {
+        /*username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(username.getText().toString().trim().isEmpty()){
@@ -91,15 +94,20 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Sucessful!!", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
 
-        /*btnSignup.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(intent);
+                String patientusername = username.getText().toString();
+                String patientemail = email.getText().toString();
+                String patientpassword = InputPassword.getText().toString();
+                long started = System.currentTimeMillis();
+
+                PatientModel patientModel=new PatientModel(patientusername,patientemail,patientpassword,started,0);
+                dbHandler.addPatient(patientModel);
             }
-        });*/
+        });
 
 
     }

@@ -30,7 +30,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/input_bg"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawableStart="@drawable/ic_baseline_person_24"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
@@ -45,7 +45,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintVertical_bias="0.067"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/email"
@@ -65,7 +66,8 @@
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/username"
         app:layout_constraintStart_toStartOf="@+id/username"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/InputPassword"
@@ -106,7 +108,8 @@
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/InputPassword"
         app:layout_constraintStart_toStartOf="@+id/InputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/InputPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/InputPassword"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/viewLogin"
@@ -114,7 +117,7 @@
         android:layout_height="wrap_content"
         android:text="Already have an account"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/btnSignup"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="@+id/inputConfirmPassword"
         app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="@+id/inputConfirmPassword"
@@ -122,7 +125,7 @@
         app:layout_constraintVertical_bias="0.588" />
 
     <Button
-        android:id="@+id/btnSignup"
+        android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg"
@@ -134,5 +137,6 @@
         app:layout_constraintStart_toStartOf="@+id/inputConfirmPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword"
         app:layout_constraintVertical_bias="0.19" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
