@@ -18,10 +18,11 @@ public class DbHandler extends SQLiteOpenHelper {
     private static final String TABLE_NAME="patient_side_effects";*/
 
     //patient table columns
-    private static final String PATIENT_ID = "patient_id";
+    private static final String PATIENT_ID = "id";
     private static final String EMAIL = "email";
     private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
+    private static final String CONFIRMPASSWORD = "confirmpassword";
     private static final String STARTED = "started";
     private static final String FINISHED = "finished";
 
@@ -52,6 +53,7 @@ public class DbHandler extends SQLiteOpenHelper {
                 +PATIENT_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +EMAIL+ "TEXT,"
                 +PASSWORD+ "TEXT"
+                +CONFIRMPASSWORD+ "TEXT"
                 +USERNAME+ "TEXT"
                 +STARTED+ "TEXT"
                 +FINISHED+ "TEXT" +
@@ -143,6 +145,7 @@ public class DbHandler extends SQLiteOpenHelper {
         contentValues.put(EMAIL,patientModel.getEmail());
         contentValues.put(USERNAME,patientModel.getUsername());
         contentValues.put(PASSWORD,patientModel.getPassword());
+        contentValues.put(CONFIRMPASSWORD,patientModel.getConfirmPassword());
         contentValues.put(STARTED,patientModel.getStarted());
         contentValues.put(FINISHED,patientModel.getFinished());
 

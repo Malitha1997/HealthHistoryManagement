@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         email=findViewById(R.id.email);
         InputPassword=findViewById(R.id.InputPassword);
         inputConfirmPassword=findViewById(R.id.inputConfirmPassword);
+        button=findViewById(R.id.button);
         context = this;
 
         dbHandler = new DbHandler(context);
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        /*username.setOnClickListener(new View.OnClickListener() {
+        username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(username.getText().toString().trim().isEmpty()){
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Sucessful!!", Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,9 +103,10 @@ public class MainActivity extends AppCompatActivity {
                 String patientusername = username.getText().toString();
                 String patientemail = email.getText().toString();
                 String patientpassword = InputPassword.getText().toString();
+                String patientconfirmpassword = inputConfirmPassword.getText().toString();
                 long started = System.currentTimeMillis();
 
-                PatientModel patientModel=new PatientModel(patientusername,patientemail,patientpassword,started,0);
+                PatientModel patientModel=new PatientModel(patientusername,patientemail,patientpassword,patientconfirmpassword,started,0);
                 dbHandler.addPatient(patientModel);
             }
         });

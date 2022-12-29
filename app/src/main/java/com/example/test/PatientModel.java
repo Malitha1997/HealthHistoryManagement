@@ -1,7 +1,7 @@
 package com.example.test;
 
 public class PatientModel {
-    private String id,email,username,password;
+    private String id,email,username,password,confirmPassword;
     private long started,finished;
 
     public PatientModel(){
@@ -56,6 +56,13 @@ public class PatientModel {
         this.password = password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
     public long getStarted() {
         return started;
     }
