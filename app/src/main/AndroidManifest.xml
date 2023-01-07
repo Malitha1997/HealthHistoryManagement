@@ -25,13 +25,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Add_prescription_01"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".View_side_effects"
             android:exported="false">
             <meta-data
@@ -93,10 +86,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <!--<activity
-            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"
-            tools:ignore="MissingClass" />-->
     </application>
 
 </manifest>

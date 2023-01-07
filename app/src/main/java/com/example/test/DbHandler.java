@@ -152,4 +152,12 @@ public class DbHandler extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
         sqLiteDatabase.close();
     }
+
+    public void addPrescription(PrescriptionModel prescriptionModel){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        //contentValues.put(DATE,prescriptionModel getDate());
+
+    }
 }

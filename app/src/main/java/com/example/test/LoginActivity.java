@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView viewSignup;
+    Button btnSignupView;
     Button btnLogin;
     EditText loginUserName;
     EditText  loginPassword;
@@ -22,18 +23,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_login);
 
-        viewSignup=findViewById(R.id.viewSignup);
+        btnSignupView=findViewById(R.id.btnSignupView);
+        btnLogin=findViewById(R.id.btnLogin);
         loginUserName=findViewById(R.id.loginUserName);
         loginPassword=findViewById(R.id.loginPassword);
-
-        viewSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),Home.class);
-                startActivity(i);
-            }
-        });
 
         loginUserName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +55,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void SignUpScreen(View view){
+        Intent i=new Intent(LoginActivity.this,MainActivity.class);
+        startActivity(i);
+    }
+
+    public void HomeScreen(View view){
+        Intent i=new Intent(LoginActivity.this,Home.class);
+        startActivity(i);
     }
 
 

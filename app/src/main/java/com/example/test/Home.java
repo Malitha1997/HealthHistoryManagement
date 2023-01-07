@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Home extends AppCompatActivity {
@@ -13,6 +14,9 @@ public class Home extends AppCompatActivity {
     TextView text_add_prescription;
     TextView text_my_health_booklet;
     TextView text_side_effects;
+    ImageView img_add_prescription;
+    ImageView img_health_booklet;
+    ImageView img_side_effects;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -22,6 +26,9 @@ public class Home extends AppCompatActivity {
 
         LifeCare=findViewById(R.id.lifeCareAddPrescription);
         text_add_prescription=findViewById(R.id.text_add_prescription);
+        img_health_booklet=findViewById(R.id.img_health_booklet);
+        img_add_prescription=findViewById(R.id.img_add_prescription);
+        img_side_effects=findViewById(R.id.img_side_effects);
         text_my_health_booklet=findViewById(R.id.text_my_health_booklet);
         text_side_effects=findViewById(R.id.text_side_effects);
 
@@ -56,5 +63,20 @@ public class Home extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    public void AddPrescriptionScreen(View view){
+        Intent i=new Intent(Home.this,Add_prescription.class);
+        startActivity(i);
+    }
+
+    public void MyHealthBookletScreen(View view){
+        Intent i=new Intent(Home.this,My_health_booklet.class);
+        startActivity(i);
+    }
+
+    public void SideEffectsScreen(View view){
+        Intent i=new Intent(Home.this,Side_effects.class);
+        startActivity(i);
     }
 }
