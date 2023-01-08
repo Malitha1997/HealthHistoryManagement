@@ -11,11 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -132,7 +129,6 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
             if (resultCode==RESULT_OK){
                 Uri resultUri=result.getUri();
                 Picasso.with(this).load(resultUri).into(pickImage);
-
             }
         }
     }
@@ -142,11 +138,28 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode){
             case CAMERA_REQUEST:{
-                if (grantResults.length>0){
-                    boolean camera_accepeted=grantResults[0]==(PackageManager.PERMISSION_GRANTED);
-                    boolean storage_accepted=grantResults[1]==(PackageManager.PERMISSION_GRANTED);
+                if (grantResults.length>0) {
+                    boolean camera_accepeted = grantResults[0] == (PackageManager.PERMISSION_GRANTED);
+                    boolean storage_accepted = grantResults[1] == (PackageManager.PERMISSION_GRANTED);
+                    if (storage_accepted) {
+                        pickFromGallery();
+                    } else {
+                        Toast.makeText(this, "Please Enable the camera and storage permission! ", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
+            break;
+            case STORAGE_REQUEST:{
+                if (grantResults.length>0){
+                    boolean storage_accepted=grantResults[0]==(PackageManager.PERMISSION_GRANTED);
+                    if (storage_accepted) {
+                        pickFromGallery();
+                    }else{
+                        Toast.makeText(this, "Please enable storage permission!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+            break;
         }
     }
 }
