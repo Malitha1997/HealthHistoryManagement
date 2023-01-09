@@ -122,7 +122,7 @@
         android:layout_height="wrap_content"
         android:text="Already have an account"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignup"
         app:layout_constraintEnd_toEndOf="@+id/inputConfirmPassword"
         app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="@+id/inputConfirmPassword"
@@ -130,7 +130,7 @@
         app:layout_constraintVertical_bias="0.588" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSignup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg"
@@ -141,7 +141,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/inputConfirmPassword"
         app:layout_constraintTop_toBottomOf="@+id/inputConfirmPassword"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintVertical_bias="0.19"
+        android:onClick="LoginScreen"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

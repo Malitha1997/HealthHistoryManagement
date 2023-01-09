@@ -39,7 +39,7 @@ public class DbHandler extends SQLiteOpenHelper {
     private static final String SIDE_EFFECT_ID = "side_effect_id";
     private static final String DESCRIPTION = "description";
 
-    public DbHandler(@Nullable Context context) {
+    public DbHandler(Context context) {
 
         super(context, DB_NAME, null, VERSION);
     }
@@ -48,24 +48,25 @@ public class DbHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         //create patients table
+
         String TABLE_CREATE_PATIENT = "CREATE TABLE patients" +
                 "("
-                +PATIENT_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +EMAIL+ "TEXT,"
-                +PASSWORD+ "TEXT"
-                +CONFIRMPASSWORD+ "TEXT"
-                +USERNAME+ "TEXT"
-                +STARTED+ "TEXT"
-                +FINISHED+ "TEXT" +
+                +PATIENT_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                +EMAIL+ " TEXT,"
+                +PASSWORD+ " TEXT,"
+                +USERNAME+ " TEXT,"
+                +STARTED+ " TEXT,"
+                +FINISHED+ " TEXT" +
                 ");";
 
         sqLiteDatabase.execSQL(TABLE_CREATE_PATIENT);
 
+
         //create diseases table
         String TABLE_CREATE_DISEASE = "CREATE TABLE diseases" +
                 "("
-                +DISEASE_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +DISEASE_NAME+ "TEXT" +
+                +DISEASE_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                +DISEASE_NAME+ " TEXT" +
                 ");";
 
         sqLiteDatabase.execSQL(TABLE_CREATE_DISEASE);
@@ -73,11 +74,11 @@ public class DbHandler extends SQLiteOpenHelper {
         //create prescriptions table
         String TABLE_CREATE_PRESCRIPTION = "CREATE TABLE prescriptions" +
                 "("
-                +PRESCRIPTION_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +DATE+ "TEXT,"
-                +IMAGE+ "BLOB,"
-                +PATIENT_ID+ "INTEGER REFERENCES patients"
-                +DISEASE_ID+ "INTEGER REFERENCES diseases" +
+                +PRESCRIPTION_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                +DATE+ " TEXT,"
+                +IMAGE+ " BLOB,"
+                +PATIENT_ID+ " INTEGER REFERENCES patients, "
+                +DISEASE_ID+ " INTEGER REFERENCES diseases" +
                 ");";
 
         sqLiteDatabase.execSQL(TABLE_CREATE_PRESCRIPTION);
@@ -86,9 +87,9 @@ public class DbHandler extends SQLiteOpenHelper {
         //create side effects table
         String TABLE_CREATE_SIDE_EFFECT = "CREATE TABLE side_effects" +
                 "("
-                +SIDE_EFFECT_ID+ "INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +DESCRIPTION+ "TEXT,"
-                +DISEASE_ID+ "INTEGER REFERENCES diseases" +
+                +SIDE_EFFECT_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                +DESCRIPTION+ " TEXT,"
+                +DISEASE_ID+ " INTEGER REFERENCES diseases" +
                 ");";
 
         sqLiteDatabase.execSQL(TABLE_CREATE_SIDE_EFFECT);
@@ -96,8 +97,8 @@ public class DbHandler extends SQLiteOpenHelper {
         //create patient_diseases table
         String TABLE_CREATE_PATIENT_DISEASE = "CREATE TABLE patient_diseases" +
                 "("
-                +PATIENT_ID+ "INTEGER REFERENCES patients,"
-                +DISEASE_ID+ "INTEGER REFERENCES diseases" +
+                +PATIENT_ID+ " INTEGER REFERENCES patients,"
+                +DISEASE_ID+ " INTEGER REFERENCES diseases" +
                 ");";
 
         sqLiteDatabase.execSQL(TABLE_CREATE_PATIENT_DISEASE);
@@ -105,8 +106,8 @@ public class DbHandler extends SQLiteOpenHelper {
         //create patient_side_effect table
         String TABLE_CREATE_PATIENT_SIDE_EFFECT = "CREATE TABLE patient_side_effects" +
                 "("
-                +PATIENT_ID+ "INTEGER REFERENCES patients,"
-                +SIDE_EFFECT_ID+ "INTEGER REFERENCES side_effects" +
+                +PATIENT_ID+ " INTEGER REFERENCES patients,"
+                +SIDE_EFFECT_ID+ " INTEGER REFERENCES side_effects" +
                 ");";
 
         sqLiteDatabase.execSQL(TABLE_CREATE_PATIENT_SIDE_EFFECT);
@@ -116,22 +117,22 @@ public class DbHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        String DROP_TABLE_PATIENT= "DROP TABLE IF EXISTS patients";
+        String DROP_TABLE_PATIENT= " DROP TABLE IF EXISTS patients";
         sqLiteDatabase.execSQL(DROP_TABLE_PATIENT);
 
-        String DROP_TABLE_DISEASE= "DROP TABLE IF EXISTS diseases";
+        String DROP_TABLE_DISEASE= " DROP TABLE IF EXISTS diseases";
         sqLiteDatabase.execSQL(DROP_TABLE_DISEASE);
 
-        String DROP_TABLE_PRESCRIPTION= "DROP TABLE IF EXISTS prescriptions";
+        String DROP_TABLE_PRESCRIPTION= " DROP TABLE IF EXISTS prescriptions";
         sqLiteDatabase.execSQL(DROP_TABLE_PRESCRIPTION);
 
-        String DROP_TABLE_SIDE_EFFECT= "DROP TABLE IF EXISTS side_effects";
+        String DROP_TABLE_SIDE_EFFECT= " DROP TABLE IF EXISTS side_effects";
         sqLiteDatabase.execSQL(DROP_TABLE_SIDE_EFFECT);
 
-        String DROP_TABLE_PATIENT_DISEASE= "DROP TABLE IF EXISTS patient_diseases";
+        String DROP_TABLE_PATIENT_DISEASE= " DROP TABLE IF EXISTS patient_diseases";
         sqLiteDatabase.execSQL(DROP_TABLE_PATIENT_DISEASE);
 
-        String DROP_TABLE_PATIENT_SIDE_EFFECT= "DROP TABLE IF EXISTS patient_side_effects";
+        String DROP_TABLE_PATIENT_SIDE_EFFECT= " DROP TABLE IF EXISTS patient_side_effects";
         sqLiteDatabase.execSQL(DROP_TABLE_PATIENT_SIDE_EFFECT);
 
         onCreate(sqLiteDatabase);
@@ -145,12 +146,12 @@ public class DbHandler extends SQLiteOpenHelper {
         contentValues.put(EMAIL,patientModel.getEmail());
         contentValues.put(USERNAME,patientModel.getUsername());
         contentValues.put(PASSWORD,patientModel.getPassword());
-        contentValues.put(CONFIRMPASSWORD,patientModel.getConfirmPassword());
         contentValues.put(STARTED,patientModel.getStarted());
         contentValues.put(FINISHED,patientModel.getFinished());
 
         sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
         sqLiteDatabase.close();
+
     }
 
     public void addPrescription(PrescriptionModel prescriptionModel){

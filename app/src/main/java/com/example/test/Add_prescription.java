@@ -2,13 +2,18 @@ package com.example.test;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,24 +28,21 @@ import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.sql.Blob;
+import java.util.Calendar;
 
 
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_prescriptionBinding> extends AppCompatActivity {
     TextView lifeCareAddPrescription;
-    //CropImageView cropImageView = (CropImageView) findViewById(R.id.CropImageView);
     public ImageView pickImage;
     Button btn_upload;
     TextView date;
     TextView disease;
+    EditText pres_date;
     public static final int CAMERA_REQUEST=100;
     public static final int STORAGE_REQUEST=101;
     String cameraPermission[];
     String storagePermission[];
-
-
-
-
 
 
     @SuppressLint("MissingInflatedId")
@@ -48,9 +50,58 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_prescription);
+        DatePickerDialog.OnDateSetListener setListener;
 
-        cameraPermission=new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        storagePermission=new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE };
+        cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+        date = findViewById(R.id.date);
+        //pres_date = findViewById(R.id.pres_date);
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        /*date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Add_prescription.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month + 1;
+                        String d = day + "/" + month + "/" + year;
+                        date.setText(d);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+                }
+            });
+
+        pres_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Add_prescription.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month + 1;
+                        String d = day + "/" + month + "/" + year;
+                        date.setText(d);
+                    }
+                },year,month,day);
+                datePickerDialog.show();
+            }
+        });*/
+
+
+        /*setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                String date = day + "/" + month + "/" + year;
+                //date.setText(date);
+            }
+        });*/
 
         lifeCareAddPrescription=findViewById(R.id.lifeCareAddPrescription);
         lifeCareAddPrescription.setOnClickListener(new View.OnClickListener() {
