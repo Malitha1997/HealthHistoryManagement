@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/inputDisease"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Add_prescription">
@@ -66,7 +67,7 @@
             app:layout_constraintTop_toTopOf="@+id/toolbar"
             app:layout_constraintVertical_bias="0.556"
             app:srcCompat="@drawable/ic_baseline_image_24"
-            tools:ignore="ContentDescription"/>
+            tools:ignore="ContentDescription" />
 
         <Button
             android:id="@+id/btn_upload"
@@ -80,7 +81,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload"
             app:layout_constraintVertical_bias="0.0"
-            tools:ignore="HardcodedText"/>
+            tools:ignore="HardcodedText"
+            android:onClick="BookletScreen"/>
 
         <TextView
             android:id="@+id/upload"
@@ -96,7 +98,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName9"
+            android:id="@+id/pres_disease"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="320dp"
@@ -106,14 +108,14 @@
             android:inputType="textPersonName"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/btn_upload"
-            app:layout_constraintEnd_toEndOf="@+id/editTextDate2"
-            app:layout_constraintStart_toStartOf="@+id/editTextDate2"
+            app:layout_constraintEnd_toEndOf="@+id/pres_date"
+            app:layout_constraintStart_toStartOf="@+id/pres_date"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintVertical_bias="1.0"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/inputDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -132,20 +134,21 @@
             android:text="Disease"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9"
-            app:layout_constraintEnd_toEndOf="@+id/textView3"
-            app:layout_constraintStart_toStartOf="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintBottom_toTopOf="@+id/pres_disease"
+            app:layout_constraintEnd_toEndOf="@+id/inputDate"
+            app:layout_constraintStart_toStartOf="@+id/inputDate"
+            app:layout_constraintTop_toBottomOf="@+id/inputDate"
             app:layout_constraintVertical_bias="0.89" />
 
         <EditText
-            android:id="@+id/editTextDate2"
+            android:id="@+id/pres_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Date"
             android:inputType="date"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/pres_disease"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"

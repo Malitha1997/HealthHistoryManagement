@@ -3,16 +3,16 @@ package com.example.test;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,11 +34,18 @@ import java.util.Calendar;
 @RequiresApi(api = Build.VERSION_CODES.M)
 public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_prescriptionBinding> extends AppCompatActivity {
     TextView lifeCareAddPrescription;
-    public ImageView pickImage;
+    ImageView pickImage;
     Button btn_upload;
-    TextView date;
-    TextView disease;
+    TextView inputDate;
+    TextView inputDisease;
     EditText pres_date;
+    EditText pres_disease;
+    Bitmap bitmap;
+    byte[] bitimg;
+    private Bitmap ImageToStore;
+
+    private DbHandler dbHandler;
+    private Context context;
     public static final int CAMERA_REQUEST=100;
     public static final int STORAGE_REQUEST=101;
     String cameraPermission[];
@@ -55,13 +62,16 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        date = findViewById(R.id.date);
-        //pres_date = findViewById(R.id.pres_date);
+        pres_date = findViewById(R.id.pres_date);
+        pres_disease = findViewById(R.id.pres_disease);
+        pickImage = findViewById(R.id.pickImage);
+        btn_upload=findViewById(R.id.btn_upload);
+        dbHandler = new DbHandler(context);
 
-        Calendar calendar = Calendar.getInstance();
+        /*Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);*/
 
         /*date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +154,30 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
         });
     }
 
+    private boolean validateDate(){
+        String val = pres_date.getText().toString();
+        if(val.isEmpty()){
+            pres_date.setError("Field can not be empty");
+            return false;
+        }
+        else{
+            pres_date.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validateDisease(){
+        String val = pres_disease.getText().toString();
+        if(val.isEmpty()){
+            pres_disease.setError("Field can not be empty");
+            return false;
+        }
+        else{
+            pres_disease.setError(null);
+            return true;
+        }
+    }
+
     private boolean checkCameraPermission() {
         boolean result= ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)==(PackageManager.PERMISSION_GRANTED);
         boolean result1=ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)==(PackageManager.PERMISSION_GRANTED );
@@ -212,5 +246,22 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
             }
             break;
         }
+    }
+
+    public void BookletScreen(View view){
+        if ( !validateDate() | !validateDisease()) {
+            return;
+        }
+
+        String presDate= pres_date.getText().toString();
+        String presDisease= pres_disease.getText().toString();
+        Bitmap pickImage = BitmapFactory.decodeResource(getResources(),R.drawable.add_prescription);
+
+        PrescriptionModel prescriptionModel=new PrescriptionModel(presDate,presDisease,pickImage);
+        dbHandler.addPrescription(prescriptionModel);
+
+        Intent i=new Intent(Add_prescription.this,My_health_booklet.class);
+        startActivity(i);
+
     }
 }

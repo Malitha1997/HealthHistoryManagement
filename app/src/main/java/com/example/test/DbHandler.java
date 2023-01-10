@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class DbHandler extends SQLiteOpenHelper {
     private static final int VERSION=1;
     private static final String DB_NAME="lifecare";
@@ -76,7 +74,7 @@ public class DbHandler extends SQLiteOpenHelper {
                 "("
                 +PRESCRIPTION_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +DATE+ " TEXT,"
-                +IMAGE+ " BLOB,"
+                +IMAGE+ " BITMAP,"
                 +PATIENT_ID+ " INTEGER REFERENCES patients, "
                 +DISEASE_ID+ " INTEGER REFERENCES diseases" +
                 ");";
@@ -158,7 +156,12 @@ public class DbHandler extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        //contentValues.put(DATE,prescriptionModel getDate());
+        contentValues.put(DATE,prescriptionModel.getDate());
+        contentValues.put(DISEASE_NAME,prescriptionModel.getDisease());
+        contentValues.put(IMAGE,prescriptionModel.getImage());
+
+        sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
+        sqLiteDatabase.close();
 
     }
 }
