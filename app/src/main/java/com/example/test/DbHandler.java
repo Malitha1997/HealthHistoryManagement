@@ -74,7 +74,7 @@ public class DbHandler extends SQLiteOpenHelper {
                 "("
                 +PRESCRIPTION_ID+ " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 +DATE+ " TEXT,"
-                +IMAGE+ " BITMAP,"
+                +IMAGE+ " BLOB,"
                 +PATIENT_ID+ " INTEGER REFERENCES patients, "
                 +DISEASE_ID+ " INTEGER REFERENCES diseases" +
                 ");";
@@ -152,7 +152,7 @@ public class DbHandler extends SQLiteOpenHelper {
 
     }
 
-    public void addPrescription(PrescriptionModel prescriptionModel){
+    /*public void addPrescription(PrescriptionModel prescriptionModel){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -163,5 +163,5 @@ public class DbHandler extends SQLiteOpenHelper {
         sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
         sqLiteDatabase.close();
 
-    }
+    }*/
 }

@@ -13,8 +13,10 @@
         android:background="@drawable/background_prescription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:context=".Home">
 
         <androidx.appcompat.widget.Toolbar
@@ -65,7 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/toolbar"
-            app:layout_constraintVertical_bias="0.556"
+            app:layout_constraintVertical_bias="0.64"
             app:srcCompat="@drawable/ic_baseline_image_24"
             tools:ignore="ContentDescription" />
 
@@ -75,14 +77,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_bg"
+            android:onClick="BookletScreen"
             android:text="Upload"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upload"
             app:layout_constraintVertical_bias="0.0"
-            tools:ignore="HardcodedText"
-            android:onClick="BookletScreen"/>
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/upload"
@@ -97,35 +99,18 @@
             app:layout_constraintTop_toBottomOf="@+id/pickImage"
             app:layout_constraintVertical_bias="0.0" />
 
-        <EditText
-            android:id="@+id/pres_disease"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="320dp"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:hint="Disease"
-            android:inputType="textPersonName"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/btn_upload"
-            app:layout_constraintEnd_toEndOf="@+id/pres_date"
-            app:layout_constraintStart_toStartOf="@+id/pres_date"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            app:layout_constraintVertical_bias="1.0"
-            tools:ignore="TouchTargetSizeCheck" />
-
         <TextView
             android:id="@+id/inputDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
             android:text="Date"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/lifeCareAddPrescription"
-            app:layout_constraintHorizontal_bias="0.206"
             app:layout_constraintStart_toStartOf="@+id/lifeCareAddPrescription"
-            app:layout_constraintTop_toBottomOf="@+id/lifeCareAddPrescription" />
+            app:layout_constraintTop_toBottomOf="@+id/lifeCareAddPrescription"
+            app:layout_constraintVertical_bias="0.100000024" />
 
         <TextView
             android:id="@+id/textView4"
@@ -133,26 +118,43 @@
             android:layout_height="wrap_content"
             android:text="Disease"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/pres_disease"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/inputDate"
             app:layout_constraintStart_toStartOf="@+id/inputDate"
             app:layout_constraintTop_toBottomOf="@+id/inputDate"
-            app:layout_constraintVertical_bias="0.89" />
+            app:layout_constraintVertical_bias="0.100000024" />
 
         <EditText
-            android:id="@+id/pres_date"
+            android:id="@+id/pres_disease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Date"
-            android:inputType="date"
+            android:hint="Disease"
+            android:inputType="textPersonName"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/pres_disease"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnpresdate"
+            app:layout_constraintStart_toStartOf="@+id/btnpresdate"
+            app:layout_constraintTop_toBottomOf="@+id/btnpresdate"
+            app:layout_constraintVertical_bias="0.050000012"
             tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/btnpresdate"
+            style="?android:spinnerStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="openDatePicker"
+            android:text="JAN 01 2023"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/head_add_prescription"
+            app:layout_constraintStart_toStartOf="@+id/head_add_prescription"
+            app:layout_constraintTop_toBottomOf="@+id/head_add_prescription"
+            app:layout_constraintVertical_bias="0.100000024" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

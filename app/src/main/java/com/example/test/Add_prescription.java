@@ -2,6 +2,7 @@ package com.example.test;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
     TextView lifeCareAddPrescription;
     ImageView pickImage;
     Button btn_upload;
+    Button btnpresdate;
     TextView inputDate;
     TextView inputDisease;
     EditText pres_date;
@@ -43,6 +46,7 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
     Bitmap bitmap;
     byte[] bitimg;
     private Bitmap ImageToStore;
+    private DatePickerDialog datePickerDialog;
 
     private DbHandler dbHandler;
     private Context context;
@@ -57,61 +61,17 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_prescription);
-        DatePickerDialog.OnDateSetListener setListener;
+        initDatePicker();
 
         cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        pres_date = findViewById(R.id.pres_date);
+        btnpresdate = findViewById(R.id.btnpresdate);
         pres_disease = findViewById(R.id.pres_disease);
         pickImage = findViewById(R.id.pickImage);
         btn_upload=findViewById(R.id.btn_upload);
+        btnpresdate.setText(getTodaysDate());
         dbHandler = new DbHandler(context);
-
-        /*Calendar calendar = Calendar.getInstance();
-        final int year = calendar.get(Calendar.YEAR);
-        final int month = calendar.get(Calendar.MONTH);
-        final int day = calendar.get(Calendar.DAY_OF_MONTH);*/
-
-        /*date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(Add_prescription.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month + 1;
-                        String d = day + "/" + month + "/" + year;
-                        date.setText(d);
-                    }
-                },year,month,day);
-                datePickerDialog.show();
-                }
-            });
-
-        pres_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(Add_prescription.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month + 1;
-                        String d = day + "/" + month + "/" + year;
-                        date.setText(d);
-                    }
-                },year,month,day);
-                datePickerDialog.show();
-            }
-        });*/
-
-
-        /*setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month + 1;
-                String date = day + "/" + month + "/" + year;
-                //date.setText(date);
-            }
-        });*/
 
         lifeCareAddPrescription=findViewById(R.id.lifeCareAddPrescription);
         lifeCareAddPrescription.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +114,74 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
         });
     }
 
+    private String getTodaysDate() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        month=month+1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        return makeDateString(day,month,year);
+    }
+
+    private void initDatePicker() {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                String date = makeDateString(day,month,year);
+                btnpresdate.setText(date);
+            }
+        };
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        int style= AlertDialog.THEME_HOLO_LIGHT;
+
+        datePickerDialog = new DatePickerDialog(this,style,dateSetListener,year,month,day);
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+    }
+
+    //Date picker
+    private String makeDateString(int day, int month, int year) {
+        return getMonthFormat(month) + " " +day+ " "+year;
+    }
+
+    private String getMonthFormat(int month) {
+        if(month==1)
+            return "JAN";
+        if(month==2)
+            return "FEB";
+        if(month==3)
+            return "MAR";
+        if(month==4)
+            return "APR";
+        if(month==5)
+            return "MAY";
+        if(month==6)
+            return "JUN";
+        if(month==7)
+            return "JUL";
+        if(month==8)
+            return "AUG";
+        if(month==9)
+            return "SEP";
+        if(month==10)
+            return "OCT";
+        if(month==11)
+            return "NOV";
+        if(month==12)
+            return "DEC";
+
+        return "JAN";
+    }
+
+    public void openDatePicker(View view){
+        datePickerDialog.show();
+    }
+
+    //validation
     private boolean validateDate(){
         String val = pres_date.getText().toString();
         if(val.isEmpty()){
@@ -178,6 +206,7 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
         }
     }
 
+    //Camera and storage permission
     private boolean checkCameraPermission() {
         boolean result= ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA)==(PackageManager.PERMISSION_GRANTED);
         boolean result1=ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)==(PackageManager.PERMISSION_GRANTED );
@@ -253,12 +282,12 @@ public class Add_prescription<storagePermission, cameraPermission, ActivityAdd_p
             return;
         }
 
-        String presDate= pres_date.getText().toString();
+        /*String presDate= pres_date.getText().toString();
         String presDisease= pres_disease.getText().toString();
         Bitmap pickImage = BitmapFactory.decodeResource(getResources(),R.drawable.add_prescription);
 
         PrescriptionModel prescriptionModel=new PrescriptionModel(presDate,presDisease,pickImage);
-        dbHandler.addPrescription(prescriptionModel);
+        dbHandler.addPrescription(prescriptionModel);*/
 
         Intent i=new Intent(Add_prescription.this,My_health_booklet.class);
         startActivity(i);

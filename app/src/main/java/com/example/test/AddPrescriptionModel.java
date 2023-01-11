@@ -1,24 +1,26 @@
 package com.example.test;
 
+import android.graphics.Bitmap;
+
 import java.sql.Blob;
 
 public class AddPrescriptionModel {
     private int id;
     private String date,disease;
-    private Blob pickImage;
+    private Bitmap pickImage;
 
     public AddPrescriptionModel() {
 
     }
 
-    public AddPrescriptionModel(int id, String date, String disease, Blob pickImage) {
+    public AddPrescriptionModel(int id, String date, String disease, Bitmap pickImage) {
         this.id = id;
         this.date = date;
         this.disease = disease;
         this.pickImage = pickImage;
     }
 
-    public AddPrescriptionModel(String date, String disease, Blob pickImage) {
+    public AddPrescriptionModel(String date, String disease, Bitmap pickImage) {
         this.date = date;
         this.disease = disease;
         this.pickImage = pickImage;
@@ -48,11 +50,11 @@ public class AddPrescriptionModel {
         this.disease = disease;
     }
 
-    public Blob getPickImage() {
+    public Bitmap getPickImage() {
         return pickImage;
     }
 
-    public void setPickImage(Blob pickImage) {
+    public void setPickImage(Bitmap pickImage) {
         this.pickImage = pickImage;
     }
 }
