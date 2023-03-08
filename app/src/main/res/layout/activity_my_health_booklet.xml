@@ -58,6 +58,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/btn_bg"
+        android:backgroundTint="@color/teal_700"
         android:text="Search"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

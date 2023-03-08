@@ -134,7 +134,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg"
-        android:backgroundTint="@color/teal_200"
+        android:backgroundTint="@color/teal_700"
         android:text="Signup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/inputConfirmPassword"

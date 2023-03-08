@@ -126,27 +126,22 @@ public class MainActivity extends AppCompatActivity {
 
     //Signup Validation
     private Boolean validateUsername() {
-
         String val = username.getText().toString();
-        String noWhiteSpace = "(?=\\%$)";
+        String noWhiteSpace = "(?=\\S+$)";
         if (val.isEmpty()) {
-            username.setError("Field can not be empty");
+            username.setError("Field cannot be empty");
             return false;
         } else if (val.length() >= 15) {
-            username.setError("Username is too long ");
+            username.setError("Username is too long");
             return false;
-
-
-        } else if (val.matches(noWhiteSpace)) {
-
-            username.setError("White space are not allowed");
+        } else if (!val.matches(noWhiteSpace)) {
+            username.setError("White spaces are not allowed");
             return false;
         } else {
             username.setError(null);
             return true;
         }
     }
-
     private Boolean validateEmail() {
 
         String val = email.getText().toString();

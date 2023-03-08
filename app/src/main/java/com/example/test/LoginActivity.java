@@ -66,7 +66,36 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    //Validation
+    private boolean validateLoginUsername(){
+        String val = loginUserName.getText().toString();
+        if (val.isEmpty()) {
+            loginUserName.setError("Field can not be empty");
+            return false;
+        }else{
+            loginUserName.setError(null);
+            return true;
+        }
+    }
 
+    private boolean validateLoginPassword(){
+        String val = loginPassword.getText().toString();
+        if (val.isEmpty()) {
+            loginPassword.setError("Field can not be empty");
+            return false;
+        }else{
+            loginPassword.setError(null);
+            return true;
+        }
+    }
 
-
+    public void LoginScreen(View view) {
+        if (validateLoginUsername() && validateLoginPassword()) {
+            Intent i = new Intent(LoginActivity.this, Home.class);
+            startActivity(i);
+        } else {
+            loginUserName.setError("Invalid Username");
+            loginPassword.setError("Invalid Password");
+        }
+    }
 }
